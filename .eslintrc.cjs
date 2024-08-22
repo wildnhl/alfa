@@ -24,13 +24,15 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'react/react-in-jsx-scope': 0,
-    '@typescript-eslint/no-unused-vars': 0,
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
-    'space-before-function-paren': 0,
-    '@typescript-eslint/space-before-function-paren': 0,
-    '@typescript-eslint/non-nullable-type-assertion-style': 0,
-    '@typescript-eslint/triple-slash-reference': 0,
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    'space-before-function-paren': 'off',
+    '@typescript-eslint/space-before-function-paren': 'off',
+    '@typescript-eslint/non-nullable-type-assertion-style': 'off',
+    '@typescript-eslint/triple-slash-reference': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/member-delimiter-style': 'off',
+    '@typescript-eslint/no-invalid-void-type': 'off'
   }
 };
