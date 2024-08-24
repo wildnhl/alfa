@@ -1,1 +1,1 @@
-export const articlesEndpoint = '/articles/';
+export const articlesEndpoint = '/reports/';
