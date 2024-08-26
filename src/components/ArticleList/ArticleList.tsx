@@ -2,10 +2,11 @@ import { useGetArticlesQuery } from '../../lib/api/articleApi';
 import { useAppSelector, useAppDispatch } from '../../lib/store';
 import {
   deletArticle,
-  addArticleToFavorites,
+  toggleArticleToFavorites,
   changeShowFavorite
 } from '../../lib/slices/articleSlice';
-import { Link } from 'react-router-dom';
+
+import { ArticleListCard } from '../ArticleListCard/ArticleListCard';
 import style from './ArticleList.module.css';
 
 export function ArticleList() {
@@ -22,7 +23,7 @@ export function ArticleList() {
   }
 
   function addFavorites(id: number) {
-    dispatch(addArticleToFavorites(id));
+    dispatch(toggleArticleToFavorites(id));
   }
 
   return (
@@ -43,79 +44,23 @@ export function ArticleList() {
             .filter((el) => el.isFavorite)
             .map((el) => {
               return (
-                <Link
-                  className={style.linkStyle}
-                  to={`/article-page/${el.id}`}
+                <ArticleListCard
                   key={el.id}
-                >
-                  <li className={style.listItem}>
-                    <img
-                      className={style.listItemImage}
-                      src={el.image_url}
-                      alt="image"
-                    />
-                    <h2 className={style.listItemHead}>{el.title}</h2>
-                    <div className={style.listParagraphBtnWrapper}>
-                      <p className={style.listItemParagraph}>{el.summary}</p>
-                      <button
-                        className={style.listBtn}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          deleteArt(el.id);
-                        }}
-                      >
-                        Delete article
-                      </button>
-                      <button
-                        onClick={(event) => {
-                          event.preventDefault();
-                          addFavorites(el.id);
-                        }}
-                      >
-                        Add to fav
-                      </button>
-                    </div>
-                  </li>
-                </Link>
+                  {...el}
+                  addFavorites={addFavorites}
+                  deleteArt={deleteArt}
+                />
               );
             })}
         {!isShowFavorite &&
           data.map((el) => {
             return (
-              <Link
-                className={style.linkStyle}
-                to={`/article-page/${el.id}`}
+              <ArticleListCard
                 key={el.id}
-              >
-                <li className={style.listItem}>
-                  <img
-                    className={style.listItemImage}
-                    src={el.image_url}
-                    alt="image"
-                  />
-                  <h2 className={style.listItemHead}>{el.title}</h2>
-                  <div className={style.listParagraphBtnWrapper}>
-                    <p className={style.listItemParagraph}>{el.summary}</p>
-                    <button
-                      className={style.listBtn}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        deleteArt(el.id);
-                      }}
-                    >
-                      Delete article
-                    </button>
-                    <button
-                      onClick={(event) => {
-                        event.preventDefault();
-                        addFavorites(el.id);
-                      }}
-                    >
-                      Add to fav
-                    </button>
-                  </div>
-                </li>
-              </Link>
+                {...el}
+                addFavorites={addFavorites}
+                deleteArt={deleteArt}
+              />
             );
           })}
       </ul>
