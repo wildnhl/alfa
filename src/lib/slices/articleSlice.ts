@@ -19,10 +19,10 @@ export const articleSlice = createSlice({
       const findId = state.data.findIndex((el) => action.payload === el.id);
       state.data.splice(findId, 1);
     },
-    addArticleToFavorites: (state, action) => {
+    toggleArticleToFavorites: (state, action) => {
       const find = state.data.find((el) => action.payload === el.id);
       if (find !== undefined) {
-        find.isFavorite = true;
+        find.isFavorite = !find.isFavorite;
       }
     },
     changeShowFavorite: (state) => {
@@ -43,6 +43,6 @@ export const articleSlice = createSlice({
   }
 });
 
-export const { deletArticle, addArticleToFavorites, changeShowFavorite } =
+export const { deletArticle, toggleArticleToFavorites, changeShowFavorite } =
   articleSlice.actions;
 export const articleReducer = articleSlice.reducer;
