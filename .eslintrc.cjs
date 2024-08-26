@@ -33,6 +33,7 @@ module.exports = {
     '@typescript-eslint/triple-slash-reference': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/member-delimiter-style': 'off',
-    '@typescript-eslint/no-invalid-void-type': 'off'
+    '@typescript-eslint/no-invalid-void-type': 'off',
+    '@typescript-eslint/naming-convention': 'off'
   }
 };
