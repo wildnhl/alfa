@@ -11,7 +11,7 @@ export function Article() {
       <>
         <button
           onClick={() => {
-            navigate('/alpha');
+            navigate('/alfa');
           }}
         >
           To the articles
