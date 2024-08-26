@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { IArticleResponse } from '../../types';
+import type { IArticleResponse, IArticle } from '../../types';
 import { articlesEndpoint } from '../../api';
 export const articleApiSlice = createApi({
   reducerPath: 'articleApi',
@@ -12,8 +12,12 @@ export const articleApiSlice = createApi({
         url: articlesEndpoint,
         params: { limit: 9 }
       })
+    }),
+    getSingleArticle: builder.query<IArticle, string | undefined>({
+      query: (id) => `${articlesEndpoint}${id}`
     })
   })
 });
 
-export const { useGetArticlesQuery } = articleApiSlice;
+export const { useGetArticlesQuery, useGetSingleArticleQuery } =
+  articleApiSlice;
