@@ -18,7 +18,7 @@ export function ArticleListCard({
   isFavorite
 }: IProps) {
   return (
-    <Link className={style.linkStyle} to={`/article-page/${id}`} key={id}>
+    <Link className={style.linkStyle} to={`/alpha/article-page/${id}`} key={id}>
       <li className={style.listItem}>
         <img className={style.listItemImage} src={image_url} alt="image" />
         <h2 className={style.listItemHead}>{title}</h2>
